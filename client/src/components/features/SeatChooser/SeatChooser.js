@@ -11,19 +11,19 @@ class SeatChooser extends React.Component {
     this.socket = io(
       process.env.NODE_ENV === 'production' ? '' : 'localhost:8000'
     );
-    this.socket.on('seatsUpdated', seats => {
+    this.socket.on('seatsUpdated', (seats) => {
       loadSeatsData(seats);
     });
     loadSeats();
   }
 
-  isTaken = seatId => {
+  isTaken = (seatId) => {
     const { seats, chosenDay } = this.props;
 
-    return seats.some(item => item.seat === seatId && item.day === chosenDay);
+    return seats.some((item) => item.seat === seatId && item.day === chosenDay);
   };
 
-  prepareSeat = seatId => {
+  prepareSeat = (seatId) => {
     const { chosenSeat, updateSeat } = this.props;
     const { isTaken } = this;
 
@@ -46,7 +46,7 @@ class SeatChooser extends React.Component {
           color='primary'
           className='seats__seat'
           outline
-          onClick={e => updateSeat(e, seatId)}
+          onClick={updateSeat(seatId)}
         >
           {seatId}
         </Button>
@@ -79,7 +79,7 @@ class SeatChooser extends React.Component {
         )}
         <h3>
           Free Seats:
-          {50 - seats.filter(client => client.day === chosenDay).length}/50
+          {50 - seats.filter((client) => client.day === chosenDay).length}/50
         </h3>
       </div>
     );

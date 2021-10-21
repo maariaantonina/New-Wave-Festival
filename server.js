@@ -40,15 +40,16 @@ app.use((req, res) => {
 // connects our backend code with the database
 process.env.NODE_ENV === 'production'
   ? mongoose.connect(
-      `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0-o1j4s.mongodb.net/NewWaveDB?retryWrites=true&w=majority`,
+      // `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0-o1j4s.mongodb.net/NewWaveDB?retryWrites=true&w=majority`,
+      `mongodb+srv://new-user:<password>@cluster0.piffd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
       }
     )
   : mongoose.connect('mongodb://localhost:27017/NewWaveDB', {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
 
 const db = mongoose.connection;
@@ -56,7 +57,7 @@ const db = mongoose.connection;
 db.once('open', () => {
   console.log('Connected to the database');
 });
-db.on('error', err => console.log('Error ' + err));
+db.on('error', (err) => console.log('Error ' + err));
 
 const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running on port: 8000');
@@ -64,9 +65,9 @@ const server = app.listen(process.env.PORT || 8000, () => {
 
 const io = socket(server);
 
-io.on('connection', socket => {
+io.on('connection', (socket) => {
   console.log('New socket');
-  socket.on('seatsUpdated', seats => {
+  socket.on('seatsUpdated', (seats) => {
     socket.broadcast('seatsUpdated', seats);
   });
 });
