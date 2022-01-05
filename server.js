@@ -40,8 +40,7 @@ app.use((req, res) => {
 // connects our backend code with the database
 process.env.NODE_ENV === 'production'
   ? mongoose.connect(
-      // `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0-o1j4s.mongodb.net/NewWaveDB?retryWrites=true&w=majority`,
-      `mongodb+srv://new-user:<password>@cluster0.piffd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+      `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.ui4tv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
