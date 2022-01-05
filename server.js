@@ -73,7 +73,6 @@ io.on('connection', (socket) => {
   console.log('New socket');
   socket.on('seatsUpdated', (seats) => {
     socket.broadcast('seatsUpdated', seats);
-    console.log(seats);
   });
 });
 
