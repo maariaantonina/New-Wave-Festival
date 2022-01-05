@@ -46,7 +46,7 @@ class SeatChooser extends React.Component {
           color='primary'
           className='seats__seat'
           outline
-          onClick={updateSeat(seatId)}
+          onClick={(e) => updateSeat(e, seatId)}
         >
           {seatId}
         </Button>

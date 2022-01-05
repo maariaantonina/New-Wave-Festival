@@ -8,12 +8,11 @@ import {
   Row,
   Col,
   Alert,
-  Progress
+  Progress,
 } from 'reactstrap';
 
 import './OrderTicketForm.scss';
 import SeatChooser from './../SeatChooser/SeatChooserContainer';
-import { loadSeats } from '../../../redux/seatsRedux';
 
 class OrderTicketForm extends React.Component {
   state = {
@@ -21,9 +20,9 @@ class OrderTicketForm extends React.Component {
       client: '',
       email: '',
       day: 1,
-      seat: ''
+      seat: '',
     },
-    isError: false
+    isError: false,
   };
   updateSeat = (e, seatId) => {
     const { order } = this.state;
@@ -46,7 +45,7 @@ class OrderTicketForm extends React.Component {
     this.setState({ order: { ...order, [name]: parseInt(value) } });
   };
 
-  submitForm = async e => {
+  submitForm = async (e) => {
     const { order } = this.state;
     const { addSeat, loadSeats } = this.props;
 
@@ -59,9 +58,9 @@ class OrderTicketForm extends React.Component {
           client: '',
           email: '',
           day: 1,
-          seat: ''
+          seat: '',
         },
-        isError: false
+        isError: false,
       });
       loadSeats();
     } else {
