@@ -13,9 +13,9 @@ const seatsRoutes = require('./routes/seats.routes');
 const app = express();
 //middleware
 app.use(
-  helmet({
+  helmet(/* {
     contentSecurityPolicy: false,
-  })
+  } */)
 );
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
