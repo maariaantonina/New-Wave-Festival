@@ -20,7 +20,12 @@ const Concert = ({ performer, price, genre, day, image, ticket }) => (
           <img className='concert__info__back' src={image} alt={performer} />
           <h2 className='concert__info__performer'>{performer}</h2>
           <h3 className='concert__info__genre'>{genre}</h3>
-          <p className='concert__info__tickets'> Only {ticket} tickets left</p>
+          <p className='concert__info__tickets'>
+            {' '}
+            {ticket === 1
+              ? 'Only 1 ticket left'
+              : 'Only ' + ticket + ' tickets left'}
+          </p>
           <p className='concert__info__day-n-price'>
             Day: {day}, Price: {price}$
           </p>

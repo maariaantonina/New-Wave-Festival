@@ -1,15 +1,19 @@
-const concertModel = require('../models/concert.model');
 const Concert = require('../models/concert.model');
 const Seats = require('../models/seat.model');
+const Workshop = require('../models/workshop.model');
 
 exports.getAll = async (req, res) => {
   try {
     let concerts = await Concert.find().lean();
     let seats = await Seats.find().lean();
+    let workshops = await Workshop.find().lean();
     res.json(
       concerts.map((concert) => ({
         ...concert,
         ticket: 50 - seats.filter((seat) => seat.day == concert.day).length,
+        workshops: workshops.filter(
+          (workshop) => workshop.concertId == concert._id
+        ),
       }))
     );
   } catch {

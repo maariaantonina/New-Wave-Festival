@@ -29,6 +29,7 @@
       opacity: 0.4;
       top: 0;
       left: 0;
+      filter: grayscale(0.5) blur(2px);
       -webkit-filter: grayscale(0.5) blur(2px);
     }
 
