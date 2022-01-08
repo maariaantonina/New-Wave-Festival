@@ -1,8 +1,17 @@
+const concertModel = require('../models/concert.model');
 const Concert = require('../models/concert.model');
+const Seats = require('../models/seat.model');
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Concert.find());
+    let concerts = await Concert.find().lean();
+    let seats = await Seats.find().lean();
+    res.json(
+      concerts.map((concert) => ({
+        ...concert,
+        ticket: 50 - seats.filter((seat) => seat.day == concert.day).length,
+      }))
+    );
   } catch {
     res.status(500).json({ message: err });
   }
@@ -41,7 +50,7 @@ exports.getByGenre = async (req, res) => {
 exports.getByPrice = async (req, res) => {
   try {
     const concerts = await Concert.find({
-      price: { $gte: req.params.price_min, $lte: req.params.price_max }
+      price: { $gte: req.params.price_min, $lte: req.params.price_max },
     });
     if (!concerts.length) res.status(404).json({ message: 'Not found' });
     else res.json(concerts);
@@ -68,7 +77,7 @@ exports.addNew = async (req, res) => {
       genre: genre,
       price: price,
       day: day,
-      image: image
+      image: image,
     });
     await newConcert.save();
     res.json({ message: 'OK' });
@@ -88,8 +97,8 @@ exports.change = async (req, res) => {
           genre: genre,
           price: price,
           day: day,
-          image: image
-        }
+          image: image,
+        },
       },
       { new: true },
       (err, doc) => {

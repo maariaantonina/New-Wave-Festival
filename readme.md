@@ -54,6 +54,7 @@ The build is minified and the filenames include the hashes.
 Main goals:
 
 - [x] update heroku app,
-- [ ] fix Content Security Policy directive problem,
-- [ ] add some data to mongo atlas,
+- [x] fix Content Security Policy directive problem,
+- [x] add some data to mongo atlas,
+- [x] add number of tickets left,
 - [ ] do some unit tests.
