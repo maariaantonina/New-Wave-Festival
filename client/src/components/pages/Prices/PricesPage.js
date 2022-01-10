@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alert, Container, Progress } from 'reactstrap';
+import { Alert, Container, Progress, List, ListInlineItem } from 'reactstrap';
 
 class Prices extends React.Component {
   componentDidMount() {
@@ -44,7 +44,11 @@ class Prices extends React.Component {
                 <p>Price: {concert.price} $</p>
                 <p>
                   Workshops:
-                  {concert.workshops.map((workshop) => workshop.name + ', ')}
+                  <List type='inline'>
+                    {concert.workshops.map((workshop) => (
+                      <ListInlineItem>{workshop.name}</ListInlineItem>
+                    ))}
+                  </List>
                 </p>
               </div>
             ))}
