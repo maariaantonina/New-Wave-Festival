@@ -1,6 +1,17 @@
 import React from 'react';
 
-import { Alert, Container, Progress, List, ListInlineItem } from 'reactstrap';
+import {
+  Alert,
+  Container,
+  Progress,
+  List,
+  ListInlineItem,
+  Row,
+  Col,
+  Button,
+} from 'reactstrap';
+
+import './PricesPage.scss';
 
 class Prices extends React.Component {
   componentDidMount() {
@@ -19,39 +30,83 @@ class Prices extends React.Component {
     else if (request.success)
       return (
         <Container>
-          <h1>Prices</h1>
-          <p>
-            Prices may differ according the day of the festival. Remember that
-            ticket includes not only the star performance, but also 10+
-            workshops. We gathered several genre teachers to help you increase
-            your vocal skills, as well as self confidence.
-          </p>
+          <Row className='prices__info'>
+            <Col xs='12' md='6'>
+              <h1>Prices</h1>
+              <p>Prices may differ according the day of the festival.</p>
+              <p>
+                Remember that ticket includes not only the star performance, but
+                also 10+ workshops. We gathered several genre teachers to help
+                you increase your vocal skills, as well as self confidence.
+              </p>
+              <Alert color='info'>
+                Attention!{' '}
+                <strong>
+                  Children under 4 can go freely with you without any other fee!
+                </strong>
+              </Alert>
+            </Col>
+            <Col
+              md='6'
+              className='d-none d-md-flex prices__info__image-container'
+            >
+              <img
+                className='prices__info__image-container__img'
+                src='/img/promo/promo1.jpg'
+                alt='Have fun with thousands of people!'
+              ></img>
+            </Col>
+          </Row>
 
-          <Alert color='info'>
-            Attention!{' '}
-            <strong>
-              Children under 4 can go freely with you without any other fee!
-            </strong>
-          </Alert>
-
-          {concerts
-            .sort((a, b) => a.day - b.day)
-            .map((concert) => (
-              <div key={concert._id}>
-                <h2>
-                  Day {concert.day} - {concert.performer}
-                </h2>
-                <p>Price: {concert.price} $</p>
-                <p>
-                  Workshops:
-                  <List type='inline'>
-                    {concert.workshops.map((workshop) => (
-                      <ListInlineItem>{workshop.name}</ListInlineItem>
-                    ))}
-                  </List>
-                </p>
+          <Row className='concerts__info'>
+            <Col xs='12' sm='4'>
+              <div className='concerts__info__image-container'>
+                <img
+                  className='concerts__info__image-container__img'
+                  src='/img/promo/promo2.jpg'
+                  alt='Have fun with thousands of people!'
+                ></img>
               </div>
-            ))}
+            </Col>
+            <Col sm='7' md='6'>
+              {concerts
+                .sort((a, b) => a.day - b.day)
+                .map((concert) => (
+                  <div key={concert._id} className='concerts__info'>
+                    <span className='concerts__info__day'>
+                      Day {concert.day}
+                    </span>
+                    <h3 className='concerts__info__artist'>
+                      {concert.performer}
+                    </h3>
+                    <div>
+                      <span className='concerts__info__price'>
+                        {concert.price}
+                      </span>
+                      <span> - General Admission</span>
+                    </div>
+                    <div>
+                      <span className='workshops__info'>Workshops:</span>
+                      <List type='inline' className='workshops__list'>
+                        {concert.workshops.map((workshop) => (
+                          <ListInlineItem
+                            key={workshop._id}
+                            className='workshops__list__item'
+                          >
+                            {workshop.name}
+                          </ListInlineItem>
+                        ))}
+                      </List>
+                    </div>
+                    <div>
+                      <Button color='primary' outline size='sm'>
+                        Buy now
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+            </Col>
+          </Row>
         </Container>
       );
   }
