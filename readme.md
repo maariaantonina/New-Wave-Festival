@@ -57,5 +57,5 @@ Main goals:
 - [x] fix Content Security Policy directive problem,
 - [x] add some data to mongo atlas,
 - [x] add number of tickets left,
-- [ ] change Prices page to use db,
+- [x] change Prices page to use db,
 - [ ] do some unit tests.

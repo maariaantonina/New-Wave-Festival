@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Alert,
@@ -9,7 +10,6 @@ import {
   Row,
   Col,
   Button,
-  NavLink,
 } from 'reactstrap';
 
 import './PricesPage.scss';
@@ -80,6 +80,7 @@ class Prices extends React.Component {
                     <h3 className='concerts__info__artist'>
                       {concert.performer}
                     </h3>
+
                     <Row>
                       <Col>
                         <span className='concerts__info__price'>
@@ -88,14 +89,13 @@ class Prices extends React.Component {
                         <span> - General Admission</span>
                       </Col>
                       <Col>
-                        <NavLink
-                          href='/order-a-ticket'
-                          state={{ day: concert.day }}
+                        <Link
+                          to={{ pathname: '/order-a-ticket', day: concert.day }}
                         >
                           <Button color='primary' outline size='sm'>
                             Buy now
                           </Button>
-                        </NavLink>
+                        </Link>
                       </Col>
                     </Row>
                     <div>

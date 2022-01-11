@@ -20,7 +20,7 @@ class OrderTicketForm extends React.Component {
     order: {
       client: '',
       email: '',
-      day: 1,
+      day: this.props.location.day || 1,
       seat: '',
     },
     isError: false,
