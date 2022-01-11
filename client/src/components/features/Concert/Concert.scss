@@ -44,17 +44,17 @@
     }
 
     &__day-n-price {
-      position: relative;
+      position: absolute;
       z-index: 2;
       margin: 0.5rem;
       bottom: 1rem;
     }
 
     &__tickets {
-      //position: relative;
+      position: absolute;
       opacity: 0.8;
       font-size: 0.9rem;
-      //bottom: 3rem;
+      bottom: 3rem;
       margin: 0.5rem;
     }
   }
