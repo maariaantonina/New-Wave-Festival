@@ -9,6 +9,7 @@ import {
   Row,
   Col,
   Button,
+  NavLink,
 } from 'reactstrap';
 
 import './PricesPage.scss';
@@ -79,12 +80,21 @@ class Prices extends React.Component {
                     <h3 className='concerts__info__artist'>
                       {concert.performer}
                     </h3>
-                    <div>
-                      <span className='concerts__info__price'>
-                        {concert.price}
-                      </span>
-                      <span> - General Admission</span>
-                    </div>
+                    <Row>
+                      <Col>
+                        <span className='concerts__info__price'>
+                          {concert.price}
+                        </span>
+                        <span> - General Admission</span>
+                      </Col>
+                      <Col>
+                        <NavLink href='/order-a-ticket'>
+                          <Button color='primary' outline size='sm'>
+                            Buy now
+                          </Button>
+                        </NavLink>
+                      </Col>
+                    </Row>
                     <div>
                       <span className='workshops__info'>Workshops:</span>
                       <List type='inline' className='workshops__list'>
@@ -97,11 +107,6 @@ class Prices extends React.Component {
                           </ListInlineItem>
                         ))}
                       </List>
-                    </div>
-                    <div>
-                      <Button color='primary' outline size='sm'>
-                        Buy now
-                      </Button>
                     </div>
                   </div>
                 ))}
