@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import {
   Button,
   Form,
@@ -24,6 +25,8 @@ class OrderTicketForm extends React.Component {
     },
     isError: false,
   };
+  // componentDidMount() {
+  // }
   updateSeat = (e, seatId) => {
     const { order } = this.state;
 
@@ -163,4 +166,4 @@ class OrderTicketForm extends React.Component {
   }
 }
 
-export default OrderTicketForm;
+export default withRouter(OrderTicketForm);

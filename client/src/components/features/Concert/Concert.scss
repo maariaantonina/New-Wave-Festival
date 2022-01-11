@@ -47,17 +47,14 @@
       position: relative;
       z-index: 2;
       margin: 0.5rem;
-      position: absolute;
       bottom: 1rem;
-      left: 1.5rem;
     }
 
     &__tickets {
+      //position: relative;
       opacity: 0.8;
       font-size: 0.9rem;
-      position: absolute;
-      bottom: 3rem;
-      left: 1.5rem;
+      //bottom: 3rem;
       margin: 0.5rem;
     }
   }

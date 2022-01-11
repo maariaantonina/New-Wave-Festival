@@ -1,3 +1,7 @@
+.small {
+  margin-left: 0.5rem;
+}
+
 .seats {
   display: flex;
   flex-wrap: wrap;
@@ -12,11 +16,9 @@
 }
 
 @media (max-width: 1200px) {
-
   .seats__seat {
     width: 2.2rem;
     height: 2.2rem;
     padding: 0 !important;
   }
 }
-

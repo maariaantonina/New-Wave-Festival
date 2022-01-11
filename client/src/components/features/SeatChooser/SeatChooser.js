@@ -60,10 +60,10 @@ class SeatChooser extends React.Component {
     return (
       <div>
         <h3>Pick a seat</h3>
-        <small id='pickHelp' className='form-text text-muted ml-2'>
+        <small id='pickHelp' className='form-text text-muted small'>
           <Button color='secondary' /> – seat is already taken
         </small>
-        <small id='pickHelpTwo' className='form-text text-muted ml-2 mb-4'>
+        <small id='pickHelpTwo' className='form-text text-muted small'>
           <Button outline color='primary' /> – it's empty
         </small>
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].success && (

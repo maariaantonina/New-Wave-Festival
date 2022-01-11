@@ -5,7 +5,7 @@ import './Concert.scss';
 
 const Concert = ({ performer, price, genre, day, image, ticket }) => (
   <article className='concert'>
-    <Row noGutters>
+    <Row className='g-0'>
       <Col xs='6'>
         <div className='concert__image-container'>
           <img
@@ -21,7 +21,6 @@ const Concert = ({ performer, price, genre, day, image, ticket }) => (
           <h2 className='concert__info__performer'>{performer}</h2>
           <h3 className='concert__info__genre'>{genre}</h3>
           <p className='concert__info__tickets'>
-            {' '}
             {ticket === 1
               ? 'Only 1 ticket left'
               : 'Only ' + ticket + ' tickets left'}

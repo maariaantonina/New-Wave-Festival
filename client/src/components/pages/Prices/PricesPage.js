@@ -88,7 +88,10 @@ class Prices extends React.Component {
                         <span> - General Admission</span>
                       </Col>
                       <Col>
-                        <NavLink href='/order-a-ticket'>
+                        <NavLink
+                          href='/order-a-ticket'
+                          state={{ day: concert.day }}
+                        >
                           <Button color='primary' outline size='sm'>
                             Buy now
                           </Button>
