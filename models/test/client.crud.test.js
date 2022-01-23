@@ -1,24 +1,38 @@
 const Client = require('../client.model');
+
 const expect = require('chai').expect;
 const mongoose = require('mongoose');
-const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
+let mongoServer = undefined;
 
 describe('Client', () => {
   before(async () => {
-    try {
-      const mongoServer = await MongoMemoryServer.create();
+    mongoServer = await MongoMemoryServer.create();
+    const mongoUri = mongoServer.getUri();
 
-      mongoose.connect(mongoServer.getUri(), {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-    } catch (err) {
-      console.log(err);
+    mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  });
+
+  afterEach(async () => {
+    const collections = mongoose.connection.collections;
+    for (let key in collections) {
+      const collection = collections[key];
+      await collection.deleteMany();
     }
   });
 
+  after(async () => {
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
+    await mongoServer.stop();
+  });
+
   describe('Reading data', () => {
-    before(async () => {
+    beforeEach(async () => {
       const testClientOne = new Client({
         name: 'Client #1',
         email: 'client1@client.com',
@@ -43,7 +57,7 @@ describe('Client', () => {
       expect(client.name).to.be.equal('Client #1');
     });
 
-    after(async () => {
+    afterEach(async () => {
       await Client.deleteMany();
     });
   });
@@ -156,9 +170,5 @@ describe('Client', () => {
     afterEach(async () => {
       await Client.deleteMany();
     });
-  });
-
-  after(() => {
-    mongoose.models = {};
   });
 });

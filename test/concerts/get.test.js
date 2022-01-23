@@ -1,4 +1,4 @@
-const chai = require('chai');
+/* const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../server');
 const Concert = require('../../models/concert.model');
@@ -115,3 +115,4 @@ describe('GET /concerts', () => {
     await Concert.deleteMany();
   });
 });
+ */

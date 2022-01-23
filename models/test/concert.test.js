@@ -47,8 +47,4 @@ describe('Concert', () => {
       expect(err).to.not.exist;
     });
   });
-
-  after(() => {
-    mongoose.models = {};
-  });
 });

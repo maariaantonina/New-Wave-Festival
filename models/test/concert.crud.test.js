@@ -1,24 +1,38 @@
 const Concert = require('../concert.model');
+
 const expect = require('chai').expect;
 const mongoose = require('mongoose');
-const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
+let mongoServer = undefined;
 
 describe('Concert', () => {
   before(async () => {
-    try {
-      const mongoServer = await MongoMemoryServer.create();
+    mongoServer = await MongoMemoryServer.create();
+    const mongoUri = mongoServer.getUri();
 
-      mongoose.connect(mongoServer.getUri(), {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-    } catch (err) {
-      console.log(err);
+    mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  });
+
+  afterEach(async () => {
+    const collections = mongoose.connection.collections;
+    for (let key in collections) {
+      const collection = collections[key];
+      await collection.deleteMany();
     }
   });
 
+  after(async () => {
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
+    await mongoServer.stop();
+  });
+
   describe('Reading data', () => {
-    before(async () => {
+    beforeEach(async () => {
       const testConcertOne = new Concert({
         performer: 'John Doe',
         genre: 'rock',
@@ -49,7 +63,7 @@ describe('Concert', () => {
       expect(concert.performer).to.be.equal('John Doe');
     });
 
-    after(async () => {
+    afterEach(async () => {
       await Concert.deleteMany();
     });
   });
@@ -177,9 +191,5 @@ describe('Concert', () => {
     afterEach(async () => {
       await Concert.deleteMany();
     });
-  });
-
-  after(() => {
-    mongoose.models = {};
   });
 });

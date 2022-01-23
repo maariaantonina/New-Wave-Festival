@@ -1,4 +1,4 @@
-const Workshop = require('../workshop.model');
+/* const Workshop = require('../workshop.model');
 const Concert = require('../concert.model');
 
 const expect = require('chai').expect;
@@ -55,6 +55,7 @@ describe('Workshop', () => {
 
     it('should return all the data with "find" method', async () => {
       const workshops = await Workshop.find();
+      console.log(workshops);
       const expectedLength = 2;
       expect(workshops.length).to.be.equal(expectedLength);
     });
@@ -262,9 +263,10 @@ describe('Workshop', () => {
       await Concert.deleteMany();
       await Workshop.deleteMany();
     });
-  }); */
+  }); 
 
   after(() => {
     mongoose.models = {};
   });
 });
+ */
