@@ -1,0 +1,64 @@
+.prices__info {
+  margin-bottom: 80px;
+
+  &__image-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    &__img {
+      max-width: 100%;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      object-fit: cover;
+      width: 300px;
+      height: 300px;
+      object-position: left;
+    }
+  }
+}
+
+.concerts__info {
+  margin-bottom: 30px;
+  &__image-container {
+    margin-top: 32px;
+    &__img {
+      max-width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      width: 250px;
+      height: 250px;
+      object-position: left;
+    }
+  }
+
+  &__day {
+    font-size: 13px;
+  }
+  &__artist {
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0;
+  }
+  &__price {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    &::before {
+      content: '$';
+      font-size: 16px;
+      vertical-align: top;
+    }
+  }
+}
+
+.workshops {
+  &__list {
+    &__item {
+      padding-right: 10px;
+    }
+  }
+  &__info {
+    font-size: 13px;
+  }
+}

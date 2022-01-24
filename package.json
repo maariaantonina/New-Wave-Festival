@@ -1,0 +1,36 @@
+{
+  "name": "first-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:maariaantonina/first-api.git",
+  "author": "Maria Kasińska <mariakasinska17@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "cd client && yarn install && set INLINE_RUNTIME_CHUNK=false && yarn build",
+    "test": "mocha --timeout 60000 \"./{,!(node_modules)/!(node_modules)/}*.test.js\" --parallel --exit",
+    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
+  },
+  "dependencies": {
+    "chai": "4.3.4",
+    "chai-http": "4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "5.0.2",
+    "mocha": "9.1.4",
+    "mongo-sanitize": "1.1.0",
+    "mongodb-memory-server": "8.2.0",
+    "mongoose": "^6.1.7",
+    "nanoid": "^3.1.31",
+    "nodemon": "^2.0.2",
+    "onchange": "^7.1.0",
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1",
+    "uuid": "^8.3.2"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "4.2.3"
+    }
+  }
+}
