@@ -77,12 +77,12 @@ describe('Workshop', () => {
       expect(workshop.name).to.be.equal('name1');
     });
 
-    it('should return a proper document by "concert name" with "find" method', async () => {
+    it('should return a proper document by "concert performer" with "find" method', async () => {
       const concert = await Concert.findOne();
       const workshop = await Workshop.findOne()
         .populate({
           path: 'concertId',
-          match: { name: concert.name },
+          match: { performer: concert.performer },
         })
         .exec();
       expect(workshop.concertId.performer).to.be.equal(concert.performer);

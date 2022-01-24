@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .promoCarousel {
   max-height: 50rem;
 
@@ -10,4 +11,18 @@
     max-height: 40rem;
   }
 
+=======
+.promoCarousel {
+  max-height: 50rem;
+
+  .carousel-inner {
+    max-height: 40rem;
+    position: relative;
+  }
+
+  .carousel-item {
+    max-height: 40rem;
+  }
+
+>>>>>>> 630d56bd580c4715348141ef6c1c5baf69d93ec5
 }

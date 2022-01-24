@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import './settings.scss';
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
@@ -18,3 +19,25 @@ h2 {
 }
 
 
+=======
+@import './settings.scss';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.5rem;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 2rem 0;
+  font-size: 4rem;
+}
+
+h2 {
+  font-weight: bold;
+  margin: 2rem 0;
+  font-size: 3rem;
+}
+
+
+>>>>>>> 630d56bd580c4715348141ef6c1c5baf69d93ec5

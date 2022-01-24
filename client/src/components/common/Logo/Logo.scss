@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import '../../../styles/settings.scss';
 
 .logo {
@@ -5,4 +6,13 @@
   font-size: $base-size * 2;
   color: $color-text;
   margin: $base-size;
+=======
+@import '../../../styles/settings.scss';
+
+.logo {
+  font-weight: bold;
+  font-size: $base-size * 2;
+  color: $color-text;
+  margin: $base-size;
+>>>>>>> 630d56bd580c4715348141ef6c1c5baf69d93ec5
 }
