@@ -42,18 +42,25 @@ app.use((req, res) => {
 });
 
 // connects our backend code with the database
-process.env.NODE_ENV === 'production'
-  ? mongoose.connect(
-      `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.ui4tv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    )
-  : mongoose.connect('mongodb://localhost:27017/NewWaveDB', {
+if (process.env.NODE_ENV === 'production') {
+  mongoose.connect(
+    `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.ui4tv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+    {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
+    }
+  );
+} else if (process.env.NODE_ENV === 'test') {
+  mongoose.connect('mongodb://localhost:27017/NewWaveDBtest', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+} else {
+  mongoose.connect('mongodb://localhost:27017/NewWaveDB', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 const db = mongoose.connection;
 
