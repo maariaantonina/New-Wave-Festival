@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import {
   Button,
   Form,
@@ -20,7 +19,7 @@ class OrderTicketForm extends React.Component {
     order: {
       client: '',
       email: '',
-      day: this.props.location.day || 1,
+      day: 1,
       seat: '',
     },
     isError: false,
@@ -166,4 +165,4 @@ class OrderTicketForm extends React.Component {
   }
 }
 
-export default withRouter(OrderTicketForm);
+export default OrderTicketForm;
