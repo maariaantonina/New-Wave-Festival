@@ -10,6 +10,7 @@ const request = chai.request;
 
 describe('GET /concerts', () => {
   before(async () => {
+    await Concert.deleteMany();
     const testConcertOne = new Concert({
       _id: '5d9f1140f10a81216cfd4408',
       performer: 'John Doe',
@@ -32,9 +33,7 @@ describe('GET /concerts', () => {
   });
 
   after(async () => {
-    await Concert.deleteMany({
-      _id: { $in: ['5d9f1140f10a81216cfd4408', '5d9f1140f10a81216cfd4409'] },
-    });
+    await Concert.deleteMany();
   });
 
   it('/ should return all concerts', async () => {
@@ -42,7 +41,7 @@ describe('GET /concerts', () => {
       const res = await request(server).get('/api/concerts');
       expect(res.status).to.be.equal(200);
       expect(res.body).to.be.an('array');
-      //expect(res.body.length).to.be.equal(2);
+      expect(res.body.length).to.be.equal(2);
     } catch (e) {
       console.log(e);
     }
@@ -81,7 +80,7 @@ describe('GET /concerts', () => {
       const res2 = await request(server).get('/api/concerts/genre/jazz');
       expect(res.status).to.be.equal(200);
       expect(res.body).to.be.an('array');
-      //expect(res.body.length).to.be.equal(1);
+      expect(res.body.length).to.be.equal(1);
       expect(res.body).to.not.be.null;
       expect(res2.status).to.be.equal(404);
     } catch (e) {
@@ -95,7 +94,7 @@ describe('GET /concerts', () => {
       const res2 = await request(server).get('/api/concerts/price/10/20');
       expect(res.status).to.be.equal(200);
       expect(res.body).to.be.an('array');
-      //expect(res.body.length).to.be.equal(2);
+      expect(res.body.length).to.be.equal(2);
       expect(res.body).to.not.be.null;
       expect(res2.status).to.be.equal(404);
     } catch (e) {
@@ -111,7 +110,7 @@ describe('GET /concerts', () => {
       expect(res.body).to.be.an('array');
       expect(res.body.length).to.be.equal(2);
       expect(res.body).to.not.be.null;
-      //expect(res2.status).to.be.equal(404);
+      expect(res2.status).to.be.equal(404);
     } catch (e) {
       console.log(e);
     }
