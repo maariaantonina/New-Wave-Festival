@@ -4,7 +4,7 @@ import {
   getRequests,
   loadSeatsRequest,
 } from '../../../redux/seatsRedux';
-import OrderTicketForm from './OrderTicketForm';
+import OrderTicketFormWrapper from './OrderTicketWrapper';
 
 const mapStateToProps = (state) => ({
   requests: getRequests(state),
@@ -15,4 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadSeats: () => dispatch(loadSeatsRequest()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderTicketForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OrderTicketFormWrapper);

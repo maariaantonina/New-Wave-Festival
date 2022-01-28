@@ -90,7 +90,10 @@ class Prices extends React.Component {
                       </Col>
                       <Col>
                         <Link
-                          to={{ pathname: '/order-a-ticket', day: concert.day }}
+                          to={{
+                            pathname: '/order-a-ticket',
+                          }}
+                          state={{ day: concert.day }}
                         >
                           <Button color='primary' outline size='sm'>
                             Buy now
